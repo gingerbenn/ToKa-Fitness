@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}{{title}} Page{% endblock %}
+{% block content %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+        
+    
+    </head>
+    <body>
+        <div style="margin-top: 50px;" class="ui container">
+            <h1 class="ui centered aligned header">Displayed {{title}}</h1>
+
+            <form class="ui form" action="/add" method="post">
+                <div class="field">
+                    <p>Book Title</p>
+                    <input type="text" name="title" placeholder="Enter Book..."><br>
+                    <p>Author</p>
+                    <input type="text" name="author" placeholder="Enter Author..."><br>
+                </div>
+                <button class="ui blue button" type="submit">Add</button>
+            </form>
+        </div>
+    </body>
+
+    {% for book in books %}
+    {% set book_id = book[0] %}
+    <div class="ui segment" style="margin: 10px;">
+        <p class="ui big header">{{book_id}} - {{book [1]}} | {{book [2]}}</p>
+        <p class="ui big header">{{book [1]}}</p>
+        <p>{{book [2]}}</p>
+
+        {% if book.complete %}
+        <span class="ui gray label">On Loan</span>
+        {% else %}
+        <span class="ui green label">Available</span>
+        {% endif %}
+
+        <a class="ui blue button" href="/update/{{ book_id }}">Update</a>
+        <a class="ui red button" href="/delete/{{ book_id }}" onclick="confirmDelete({{ book_id }})">Delete</a>
+    </div>
+</html>
+{% endfor %}
+
+{% endblock %}
