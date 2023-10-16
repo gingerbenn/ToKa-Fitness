@@ -18,6 +18,12 @@ def about():
     current_user = session.get("user")
     return render_template('about.html',title=title,current_user=current_user)
 
+@app.route('/profile')
+def profile():
+    title = "blank"
+    current_user = session.get("user")
+    return render_template('profile.html',title=title,current_user=current_user)
+
 @app.route("/add", methods=["POST"])
 def add():
     title = request.form.get("title",'')

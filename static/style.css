@@ -4,3 +4,45 @@
   width: fit-content;
   padding: 10px;
 }
+
+.center {
+  align-items: center;
+  text-align: center;
+}
+
+.bg-image {
+  background: url(../static/images/photo-1505731266723-9adc6eb6ea96.jfif);
+  height: 100vh;
+  backdrop-filter: blur(8px);
+  background-position: center;
+  background-size: cover;
+}
+
+.img-small {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-text {
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.submit-button {
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  width: 150px;
+  border: 1px black;
+  justify-items: center;
+  
+}
+
+.center-button {
+  margin-right: 50%;
+  margin-left: 25%;
+}
+

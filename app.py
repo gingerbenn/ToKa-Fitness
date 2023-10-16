@@ -1,7 +1,6 @@
 from flask import Flask
 from datetime import timedelta, datetime
 
-
 app = Flask(__name__)
 
 app.secret_key = 'Livi'
