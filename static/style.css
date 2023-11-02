@@ -1,3 +1,10 @@
+/* Set the width of the body and html elements to 100% */
+body,
+html {
+  width: 100%;
+}
+
+/* Styles for centering a form */
 .center-form {
   margin: auto;
   margin-top: 5%;
@@ -5,44 +12,274 @@
   padding: 10px;
 }
 
-.center {
-  align-items: center;
-  text-align: center;
+/* Styles for a card with a background color */
+.bg-card {
+  width: fit-content;
+  height: fit-content;
+  padding: 30px;
+  background-color: #5c8ead;
+  border-radius: 10px;
 }
 
 .bg-image {
-  background: url(../static/images/photo-1505731266723-9adc6eb6ea96.jfif);
+  background: url(../static/images/bg.jpg);
   height: 100vh;
   backdrop-filter: blur(8px);
   background-position: center;
   background-size: cover;
 }
 
+
+/* Styles for centering elements */
+.center {
+  align-items: center;
+  text-align: center;
+}
+
+/* Styles for a navigation bar */
+.navbar {
+  padding: 20px;
+  height: 90px; /* Adjust this value as needed */
+  /* Remove the transition effect on height */
+}
+
+/* Styles for navigation links */
+.nav-link {
+  transition: 0.25s ease-in-out !important;
+  color: white !important;
+}
+
+/* Styles for navigation links on hover */
+.nav-link:hover {
+  transform: scale(1.15);
+}
+
+.input-box {
+  transition: 0.15s ease-in-out;
+}
+
+.input-box:focus {
+  transform: scale(1.03);
+  box-shadow: 1px 3px 10px rgb(0 0 0 / 0.4);
+}
+
+textarea {
+  transition: 0.15s ease-in-out;
+  border-radius: 8px;
+}
+
+textarea:focus {
+  transform: scale(1.03);
+  box-shadow: 1px 3px 10px rgb(0 0 0 / 0.4);
+}
+
+/* Styles for small images */
 .img-small {
   width: 20px;
   height: 20px;
 }
 
-.nav-text {
-  font-weight: bolder;
-  font-size: larger;
-}
-
+/* Styles for bold text */
 .bold-text {
   font-weight: bold;
 }
 
+/* Styles for an info card */
+.info-card {
+  background-color: #2d364d;
+  width: fit-content;
+  padding: 15px;
+  border-radius: 7px;
+  margin: auto;
+}
+
+.rl-card {
+  background-color: beige;
+  padding: 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* Styles for a submit button */
 .submit-button {
   padding: 5px 10px 5px 10px;
   border-radius: 10px;
-  width: 150px;
-  border: 1px black;
+  width: 160px;
+  border: #e7e7e7 solid 1px;
   justify-items: center;
-  
+  background-color: #e7e7e7;
+  transition: 0.3s;
+  position: relative;
+  z-index: 1;
+  perspective: 1000px;
 }
 
+/* Styles for a submit button on hover */
+.submit-button:hover {
+  background-color: #cccccc;
+  border: 1px solid #979797;
+  transform: scale(1.02);
+  box-shadow: 1px 3px 10px rgb(0 0 0 / 0.25);
+}
+
+.page-links {
+  display: inline-block;
+  color: black;
+  transition: 0.25s ease-in-out;
+}
+
+.page-links:hover {
+  color: #232323;
+  text-decoration: none;
+  transform: scale(1.05);
+}
+
+/* Styles for an auto-size button */
+.auto-size-button {
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  width: fit-content;
+  border: #e7e7e7 solid 1px;
+  justify-items: center;
+  background-color: #e7e7e7;
+  transition: 0.3s;
+}
+
+.required {
+  color: rgb(223, 0, 0);
+}
+
+.show-pass-btn {
+  border: 1px solid #232323;
+  border-radius: 3px;
+  transition: 0.25s ease-in-out;
+  margin: 2px;
+}
+
+.show-pass-btn:focus {
+  background-color: rgb(165, 165, 165);
+  transform: scale(1.03);
+  box-shadow: 1px 3px 10px rgb(0 0 0 / 0.4);
+}
+
+/* Styles for an auto-size button on hover */
+.auto-size-button:hover {
+  background-color: #cccccc;
+  border: 1px solid #979797;
+}
+
+input {
+  border-radius: 3px;
+  border: black solid 1px;
+}
+
+/* Styles for centering a button */
 .center-button {
   margin-right: 50%;
   margin-left: 25%;
 }
 
+/* Grid Styles */
+
+/* 2x2 Grid */
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin: 20px;
+}
+
+/* 4x2 Grid */
+.grid-4x2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin: 60px 20px 20px 20px;
+}
+
+/* Styles for a grid item */
+.grid-item {
+  padding: 20px;
+  background-color: whitesmoke;
+  border-radius: 7px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
+}
+
+/* Styles for a grid text box */
+.grid-text-box {
+  background-color: rgb(218, 216, 216);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 7px;
+}
+
+/* Positioning for a grid item in a 2x2 grid */
+.g2x2-1 {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+/* Positioning for a grid item in a 2x2 grid */
+.g2x2-4 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* Positioning for a grid item in a 4x2 grid */
+.g4x2-1 {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+
+.g3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  margin: 55px 20px 20px 20px;
+  padding: 30px;
+}
+
+.g1x1 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(1,1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  padding: 10px;
+}
+
+.front-page-button-link {
+  width: 300px;
+  height: 350px;
+  border: none;
+  border-radius: 8px;
+  transition: 0.15s ease-in-out;
+}
+
+.front-page-button-link:hover {
+  transform: rotate(-1deg);
+  box-shadow: 1px 3px 10px rgb(0 0 0 / 0.4);
+}
+
+/* Flash Messages Styles */
+
+/* Styles for a fixed-position element */
+#my-app {
+  position: fixed;
+  width: 100%;
+  opacity: 0.5;
+  transition: opacity 1s ease-in-out;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  z-index: 1;
+}

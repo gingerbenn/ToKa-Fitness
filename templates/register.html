@@ -1,27 +1,64 @@
-{% extends 'base.html' %}
-{% block title %}{{title}}{% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% block title %}{{title}}{% endblock %} {% block
+content %}
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    .navbar {
+      padding: 20px;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="center-form ">
-        <form action="/register" method="POST" class="bold-text">
-            <h3>Sign up</h3>
-            <p>Username</p>
-            <p><input type="text" id="nm" name="nm" size="35px"></p>
-            <p>Email</p>
-            <p><input type="text" id="email" name="email" size="35px"></p>
-            <p>Password</p>
-            <p><input type="text" id="pword" name="pword" size="35px"></p>
-            <p><input class='submit-button center-button bold-text' type="submit" name="submit"></p>
-        </form>
+  <div class="rl-card">
+    <div class="center-form">
+      <form action="/register" method="POST" class="bold-text">
+        <h3>Sign up</h3>
+        <h6 class="required">* Required</h6>
+        <p>Username<span class="required"> *</span></p>
+        <p><input type="text" id="nm" name="nm" size="35px" required class="input-box" maxlength="14"
+            autocomplete="off" /></p>
+        <p>Email<span class="required"> *</span></p>
+        <p><input type="email" id="email" name="email" size="35px" required class="input-box" autocomplete="off" /></p>
+        <p>Password<span class="required"> *</span></p>
+        <p><input type="password" id="pword" name="pword" size="30px" required class="input-box" minlength="8"
+            autocomplete="off" />
+          <button type="button" class="show-pass-btn" onclick="togglePassword()"><img
+              src="../static/images/eye-password-hide-icon-512x512-iv45hct9.png"
+              class="img-small">{{closed_eye}}</button>
+        </p>
+
+        <p>
+          Create a bio
+        </p>
+        <p>
+          <center><textarea style="resize: none;" name="bio" id="bio" cols="35" rows="5"
+              placeholder="Tell us a bit about yourself..."></textarea></center>
+        </p>
+        <p>
+          Choose your membership<span class="required"> *</span>
+        </p>
+        <p>
+          <select type="text" class="form-control" name="mtype" id="mtype" required>
+            <option value="" disabled selected>Please select a membership</option>
+            <option value="Senior">Senior</option>
+            <option value="Member">Member</option>
+            <option value="Trainer">Trainer</option>
+          </select>
+        </p>
+        <center><input class="submit-button bold-text" type="submit" name="submit" />
+          </p>
+      </form>
     </div>
+  </div>
+  <script src="../static/login.js"></script>
 </body>
+
 </html>
 {% endblock %}

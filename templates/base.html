@@ -1,60 +1,103 @@
+<!-- Start of HTML document -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="../static/style.css">
-  <meta charset="UTF-8">
-  <link rel="icon" href="../static/images/pngtree-gym-weight-icon-on-white-background-png-image_2108292-removebg-preview.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}{% endblock %}</title>
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body class="bg-image">
-  <nav class="navbar navbar-expand-lg navbar-light nav-text">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link about-button" href="about">About</a>
-        </li>
-        {% if current_user %}
-        <li class="nav-item">
-          <a class="nav-link" style="width: 100px;" href="/logout">Log Out</a>
-        </li>
-        <li class="nav-item"></li>
-        <div class="float-right" style="width: 1620px;">
-          <li class="nav-item nav-logged-in">
-            <a class="nav-link float-right" style="margin: auto;" href="/profile">User: {{ current_user }}</a>
-          </li>
-        </div>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link data-button" href="register">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Log In</a>
-        </li>
-        {% endif %}
-      </ul>
-    </div>
-  </nav>
-  
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, msg in messages %}
-        <div class="alert {% if category == 'danger' %}alert-danger{% elif category == 'success' %}alert-success{% else %}alert-info{% endif %}" style="opacity: 0.5; text-align: center; font-weight: bold; font-size: large;">
-          {{ msg }}
-        </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+  <head>
+    <!-- Link to custom stylesheet -->
+    <link rel="stylesheet" href="../static/style.css" />
 
-  <p>{% block content %}{% endblock %}</p>
-</body>
+    <!-- Meta information -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Link to Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    {% if current_user %}
+      {% set user_name = current_user[0][1]%}
+      {% set user_email = current_user[0][2]%}
+      {% set user_password = current_user[0][3]%}
+      {% set user_membership = current_user[0][4]%}
+      {% set user_bio = current_user[0][5]%}
+      {% set user_profile_picture = current_user[0][6]%}
+    {% endif %}
+
+    <!-- Title of the page (can be overridden) -->
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+
+  <body class="bg-image">
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg bold-text">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <!-- Navigation items -->
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link about-button" href="about">About</a>
+          </li>
+          <!-- Conditional navigation items based on user login status -->
+          {% if current_user %}
+          <li class="nav-item">
+            <a class="nav-link" style="width: 100px" href="/logout">Log Out</a>
+          </li>
+          <li class="nav-item"></li>
+          <div class="float-right" style="width: 1620px">
+            <li class="nav-item nav-logged-in">
+              <a
+                class="nav-link float-right"
+                style="margin: auto"
+                href="/profile"
+                >User: {{ current_user[0][1] }}</a
+              >
+            </li>
+          </div>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link data-button" href="register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Log In</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Include JavaScript for alerts -->
+    <script src="../static/alerts.js"></script>
+
+    <!-- Display flashed messages as alerts -->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, msg in messages %}
+    <div
+      id="my-app"
+      class="alert {% if category == 'danger' %}alert-danger{% elif category == 'success' %}alert-success{% else %}alert-info{% endif %}"
+    >
+      {{ msg }}
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+
+    <!-- Content block (can be overridden) -->
+    <p>{% block content %}{% endblock %}</p>
+  </body>
 </html>
+<!-- End of HTML document -->

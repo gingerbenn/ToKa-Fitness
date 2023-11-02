@@ -4,30 +4,39 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/style.css">
 </head>
+
 <body>
-    <div class="center-form">
-        <div class="flipY">
-            <form class="bold-text" action="/login" method="POST">
-                <h3>Log in</h3>
-                <p>Username</p>
-                <p><input type="text" id="nm" name="nm" size="35px"></p>
-                <p>Password</p>
-                <p>
-                    <input type="password" id="pword" name="pword" size="35px">
-                    <button type="button" onclick="togglePassword()"><img src="../static/images/eye-password-hide-icon-512x512-iv45hct9.png" class="img-small">{{closed_eye}}</button>
-                </p>
-                <p><input class='submit-button bold-text center-button' type="submit" name="submit"/></p>
-                <a class="nav-link" href="/register" style="text-align: center; color: black;">Need to Register?</a>
-            </form>
+    <div class="rl-card">
+        <div class="center-form">
+            <div class="flipY">
+                <form class="bold-text" action="/login" method="POST">
+                    <h3>Log in</h3>
+                    <p>Username</p>
+                    <p><input type="text" id="nm" name="nm" size="35px" required class="input-box" maxlength="14"
+                            autocomplete="off" /></p>
+                    <p>Password</p>
+                    <p>
+                        <input type="password" id="pword" name="pword" size="30px" required class="input-box"
+                            minlength="8" autocomplete="off" />
+                        <button type="button" class="show-pass-btn" onclick="togglePassword()"><img
+                                src="../static/images/eye-password-hide-icon-512x512-iv45hct9.png"
+                                class="img-small">{{closed_eye}}</button>
+                    </p>
+                    <p><input class='submit-button bold-text center-button' type="submit" name="submit" /></p>
+                    <center><a class='page-links' href="/register">Need to Register?</a></center>
+                </form>
+            </div>
         </div>
     </div>
     <script src="../static/login.js"></script>
 </body>
+
 </html>
 {% endblock %}
