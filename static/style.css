@@ -29,6 +29,10 @@ html {
   background-size: cover;
 }
 
+.bg-colour {
+  background: red !important;
+}
+
 
 /* Styles for centering elements */
 .center {
@@ -101,6 +105,28 @@ textarea:focus {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.pfp {
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  background-color: white;
+}
+
+.pfp-navbar {
+  border-radius: 50%;
+  border: white solid 2px;
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  float: right;
+  transition: 0.25s ease-in-out;
+  margin: 5px;
+}
+
+.pfp-navbar:hover {
+  transform: scale(1.15);
 }
 
 /* Styles for a submit button */
@@ -185,7 +211,7 @@ input {
 /* Grid Styles */
 
 /* 2x2 Grid */
-.grid-2x2 {
+.g2x2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -205,6 +231,11 @@ input {
 }
 
 /* Styles for a grid item */
+.grid-span-2 {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
 .grid-item {
   padding: 20px;
   background-color: whitesmoke;

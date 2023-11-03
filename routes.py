@@ -35,32 +35,6 @@ def profile():
     current_user = session.get("user")
     return render_template('profile.html', title=title, current_user=current_user)
 
-
-@app.route("/add", methods=["POST"])
-def add():
-    title = request.form.get("title", '')
-    author = request.form.get("author", '')
-
-    db.updateDB("INSERT INTO Books_Table (title,author) VALUES (?,?)", [
-                title, author])
-    flash("Book added successfully!")
-
-    return redirect(url_for("data"))
-
-
-@app.route('/delete/<int:book_id>', methods=['GET', 'POST'])
-def delete(book_id):
-    book = db.queryDB("SELECT * FROM Books_Table WHERE book_id = ?", [book_id])
-
-    if not book:
-        flash('Book not found', 'danger')
-    else:
-        db.updateDB("DELETE FROM Books_Table WHERE book_id = ?", [book_id])
-        flash("Book deleted successfully", "success")
-
-    return redirect(url_for('data'))
-
-
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     title = 'Login'
@@ -80,9 +54,7 @@ def login():
             stored_password = found_user[0][3]
 
             if stored_password == hashed_password:
-                get_user = db.queryDB(
-                    'SELECT * FROM Customers_Table WHERE Name = ?', [user])
-                session['user'] = get_user
+                session['user'] = db.queryDB('SELECT * FROM Customers_Table WHERE Name = ?', [user])
                 session['email'] = found_user[0][2]
                 flash('Login Successful', 'success')
                 return redirect(url_for('home'))
@@ -110,20 +82,19 @@ def register():
         password = request.form["pword"]
         email = request.form["email"]
         membership = request.form["mtype"]
-        bio = request.form["bio"]
+        bio = request.form["bio"] or "It's a bit empty... Try adding a bio."
         profile_pic = "default.png"
 
-        hashed_email = hashlib.md5(str(email).encode()).hexdigest()
         hashed_password = hashlib.md5(str(password).encode()).hexdigest()
 
         result = db.queryDB(
-            "SELECT * FROM Customers_Table WHERE Name = ? or Email = ?", [user, hashed_email])
+            "SELECT * FROM Customers_Table WHERE Name = ? or Email = ?", [user, email])
         if result:
             flash("Email or username already exists, please try again.", "danger")
             return redirect(url_for("register"))
 
         db.updateDB("INSERT INTO Customers_Table (Name, Email, Password, Membership, Bio, Profile_Picture) VALUES (?, ?, ?, ?, ?, ?)", [
-                    user, hashed_email, hashed_password, membership, bio, profile_pic])
+                    user, email, hashed_password, membership, bio, profile_pic])
         return render_template('login.html', current_user=current_user)
     else:
         return render_template("register.html", title=title, current_user=current_user)
@@ -132,12 +103,14 @@ def register():
 
 
 def allowed_file(filename):
+    current_user = session.get("user")
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/upload-file', methods=['GET', 'POST'])
 def upload_file():
+    current_user = session.get("user")
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -160,16 +133,19 @@ def upload_file():
 
             db.updateDB("UPDATE Customers_Table SET Profile_Picture = ? WHERE Customer_ID = ?", [filename, get_user_ID[0][0]])
 
-            current_user = session.get("user")
-            title = "blank"
-            flash('Profile Picture has been updated', 'info')
-            return render_template('profile.html', title=title, current_user=current_user)
+            #// This displays a flash message for the user to see that a change has been made
+            flash("User has changed their profiekl picet", "info")
+            #// This gets the suer session + updates it
+            session['user'] = db.queryDB('SELECT * FROM Customers_Table WHERE Name = ?', [user[0][1]])
+            #// Returns a redirect to the user profile page
+            return redirect(url_for('profile'))
 
     return render_template('profile.html')
 
 
 @app.route('/uploads/<name>')
 def uploaded_file(name):
+    current_user = session.get("user")
     return send_from_directory(app.config["UPLOAD_FOLDER"], name)
 
 

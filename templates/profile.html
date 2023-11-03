@@ -10,22 +10,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<body class="bg-colour">
   <div class="card m-3">
     <div class="card-body">
-      <img src="static/images/profile_pictures/{{ user_profile_picture }}" style="border-radius: 50%; width: 180px; height: 180px;">
-      <h1>{{ user_name }}'s profile</h1>
-      <p>It's a bit empty...</p>
+      <img src="static/images/profile_pictures/{{ user_profile_picture }}" class="pfp">
+      <h2>{{user_name}}'s profile</h2>
+      <h6 style="font-weight: bold;">{{ user_email }}</h6>
+      <p>Membership status: {{ user_membership }}</p>
+      <p>{{ user_bio }}</p>
     </div>
-    <div class="g1x1">
-      <div class="grid-item">
-        <img src="static/images/profile_pictures/{{ user_profile_picture }}" style="border-radius: 50%; width: 180px; height: 180px;">
+    <div class="g2x2">
+      <div class="grid-item grid-span-2">
+        <img src="static/images/profile_pictures/{{ user_profile_picture }}" class="pfp">
         <h1>Change a profile picture</h1>
         <form method=post enctype=multipart/form-data action="/upload-file">
           <input type=file name=file style="border: none;">
           <input type=submit value=Upload>
         </form>
       </div>
+      <div class="grid-item">fabi</div>
+      <div class="grid-item">hello</div>
     </div>
 </body>
 
