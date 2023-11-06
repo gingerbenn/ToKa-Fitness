@@ -9,8 +9,8 @@ import os
 
 db = database()
 
-UPLOAD_FOLDER = os.path.join(os.getcwd(), 'static/images/profile_pictures')
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'static/images/profile_pictures') # gets the absolute file path for the profile pictures
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -28,6 +28,11 @@ def about():
     current_user = session.get("user")
     return render_template('about.html', title=title, current_user=current_user)
 
+@app.route('/settings')
+def settings():
+    title = 'Settings'
+    current_user = session.get("user")
+    return render_template('settings.html', title=title, current_user=current_user)
 
 @app.route('/profile')
 def profile():
@@ -102,6 +107,7 @@ def register():
     return render_template('register.html', title=title, current_user=current_user)
 
 
+# gets the stuff after ".png" and returns the value if the value is accepted by the allows_extensions then it continues
 def allowed_file(filename):
     current_user = session.get("user")
     return '.' in filename and \
@@ -115,14 +121,14 @@ def upload_file():
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
-            return redirect(request.url)
+            return redirect(url_for('profile'))
 
         file = request.files['file']
         # if user does not select file, browser also
         # submit an empty part without filename
         if file.filename == '':
             flash('No selected file')
-            return redirect(request.url)
+            return redirect(url_for('profile'))
 
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
@@ -134,13 +140,13 @@ def upload_file():
             db.updateDB("UPDATE Customers_Table SET Profile_Picture = ? WHERE Customer_ID = ?", [filename, get_user_ID[0][0]])
 
             #// This displays a flash message for the user to see that a change has been made
-            flash("User has changed their profiekl picet", "info")
+            flash("User has changed their profile picture", "info")
             #// This gets the suer session + updates it
             session['user'] = db.queryDB('SELECT * FROM Customers_Table WHERE Name = ?', [user[0][1]])
             #// Returns a redirect to the user profile page
             return redirect(url_for('profile'))
 
-    return render_template('profile.html')
+    return render_template('profile.html', current_user=current_user)
 
 
 @app.route('/uploads/<name>')

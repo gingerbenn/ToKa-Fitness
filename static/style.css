@@ -17,20 +17,12 @@ html {
   width: fit-content;
   height: fit-content;
   padding: 30px;
-  background-color: #5c8ead;
+  background-color: #383F51;
   border-radius: 10px;
 }
 
-.bg-image {
-  background: url(../static/images/bg.jpg);
-  height: 100vh;
-  backdrop-filter: blur(8px);
-  background-position: center;
-  background-size: cover;
-}
-
 .bg-colour {
-  background: red !important;
+  background-color: #3C4F76;
 }
 
 
@@ -50,7 +42,7 @@ html {
 /* Styles for navigation links */
 .nav-link {
   transition: 0.25s ease-in-out !important;
-  color: white !important;
+  color: #DDDBF1 !important;
 }
 
 /* Styles for navigation links on hover */
@@ -90,7 +82,7 @@ textarea:focus {
 
 /* Styles for an info card */
 .info-card {
-  background-color: #2d364d;
+  background-color: #383F51;
   width: fit-content;
   padding: 15px;
   border-radius: 7px;
@@ -98,28 +90,29 @@ textarea:focus {
 }
 
 .rl-card {
-  background-color: beige;
+  background-color: #383F51;
   padding: 20px;
   border-radius: 10px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+  color: #DDDBF1;
 }
 
 .pfp {
   border-radius: 50%;
   width: 140px;
   height: 140px;
-  background-color: white;
+  background-color: #DDDBF1;
 }
 
 .pfp-navbar {
   border-radius: 50%;
-  border: white solid 2px;
+  border: #DDDBF1 solid 2px;
   width: 35px;
   height: 35px;
-  background-color: white;
+  background-color: #DDDBF1;
   float: right;
   transition: 0.25s ease-in-out;
   margin: 5px;
@@ -153,12 +146,12 @@ textarea:focus {
 
 .page-links {
   display: inline-block;
-  color: black;
+  color: #DDDBF1;
   transition: 0.25s ease-in-out;
 }
 
 .page-links:hover {
-  color: #232323;
+  color: #DDDBF1;
   text-decoration: none;
   transform: scale(1.05);
 }
@@ -175,8 +168,13 @@ textarea:focus {
 }
 
 .required {
-  color: rgb(223, 0, 0);
+  color: orangered
 }
+
+/* .navbar-nav .nav-link-settings {
+  float: right;
+} */
+
 
 .show-pass-btn {
   border: 1px solid #232323;
@@ -238,7 +236,7 @@ input {
 
 .grid-item {
   padding: 20px;
-  background-color: whitesmoke;
+  background-color: #DDDBF1;
   border-radius: 7px;
   text-align: center;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
@@ -313,4 +311,10 @@ input {
   font-weight: bold;
   font-size: large;
   z-index: 1;
+}
+
+.topnav-right{
+  width: fit-content;
+  position: absolute;
+  right: 0;
 }

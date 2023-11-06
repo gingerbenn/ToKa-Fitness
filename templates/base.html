@@ -44,9 +44,9 @@
   <title>{% block title %}{% endblock %}</title>
 </head>
 
-<body class="bg-image">
+<body class="bg-colour">
   <!-- Navigation bar -->
-  <nav class="navbar navbar-expand-lg bold-text">
+  <nav class="navbar navbar-expand-lg bold-text" style="width: 1890px;" >
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -60,9 +60,7 @@
         <li class="nav-item">
           <a class="nav-link about-button" href="about">About</a>
         </li>
-        <li class="nav-item nav-logged-in">
-          <a class="nav-link float-right" style="margin: auto" href="/">Settings</a>
-        </li>
+
         <!-- Conditional navigation items based on user login status -->
         {% if current_user %}
         <li class="nav-item">
@@ -75,6 +73,7 @@
                 class="pfp-navbar"></a>
           </li>
         </div>
+
         {% else %}
         <li class="nav-item">
           <a class="nav-link data-button" href="register">Register</a>
@@ -83,6 +82,12 @@
           <a class="nav-link" href="/login">Log In</a>
         </li>
         {% endif %}
+        
+        <div class = topnav-right>
+          <li class="nav-item">
+            <a class="nav-link nav-link-settings" href="/settings">Settings</a>
+          </li>
+        </div>
       </ul>
     </div>
   </nav>

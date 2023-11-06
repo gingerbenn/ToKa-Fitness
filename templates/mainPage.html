@@ -1,64 +1,6 @@
-{% extends 'base.html' %} {% block title %}{{title}} Page{% endblock %} {% block
-content %}
+{% extends 'base.html' %} {% block title %}Home Page{% endblock %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
+<h1>Hello world!</h1>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../static/style.css" /> 
-</head>
-
-<body>
-  <center>
-    <div class="g3x3 bg-card">
-      <div>
-        {% if current_user %}
-          <center><a href="/profile"><button class="front-page-button-link"><img
-                src="static/images/profile_pictures/{{ user_profile_picture }}"
-                style="border-radius: 50%; width: 180px; height: 180px;"><br>View and update your profile</button></a></center>
-        {% else %}
-          <center><a href="/register"><button class="front-page-button-link"><img
-            src="static/images/profile_pictures/default.png"
-            style="border-radius: 50%; width: 180px; height: 180px;"><br>Click here to make a free account</button></a></center>
-        {% endif %}
-      </div>
-      <div>
-        <center><button class="front-page-button-link"><img
-              src="static/images/cartoon-disgruntled-businessman-in-a-business-suit-vector-46962274.png"
-              style="width: 175px;"><br>click me click me click me click me click me click me click me click me click me
-            click me click me click me click me click me click me click me </button></center>
-      </div>
-      <div>
-        <center><button class="front-page-button-link"><img
-              src="static/images/cartoon-disgruntled-businessman-in-a-business-suit-vector-46962274.png"
-              style="width: 175px;"><br>click me click me click me click me click me click me click me click me click me
-            click me click me click me click me click me click me click me </button></center>
-      </div>
-      <div>
-        <center><button class="front-page-button-link"><img
-              src="static/images/cartoon-disgruntled-businessman-in-a-business-suit-vector-46962274.png"
-              style="width: 175px;"><br>click me click me click me click me click me click me click me click me click me
-            click me click me click me click me click me click me click me </button></center>
-      </div>
-      <div>
-        <center><button class="front-page-button-link"><img
-              src="static/images/cartoon-disgruntled-businessman-in-a-business-suit-vector-46962274.png"
-              style="width: 175px;"><br>click me click me click me click me click me click me click me click me click me
-            click me click me click me click me click me click me click me </button></center>
-      </div>
-      <div>
-        <center><button class="front-page-button-link"><img
-              src="static/images/cartoon-disgruntled-businessman-in-a-business-suit-vector-46962274.png"
-              style="width: 175px;"><br>click me click me click me click me click me click me click me click me click me
-            click me click me click me click me click me click me click me </button></center>
-      </div>
-    </div>
-  </center>
-  
-</body>
-
-</html>
 {% endblock %}
