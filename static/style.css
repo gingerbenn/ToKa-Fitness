@@ -16,7 +16,6 @@ html {
 .bg-card {
   width: fit-content;
   height: fit-content;
-  padding: 30px;
   background-color: #383F51;
   border-radius: 10px;
 }
@@ -35,7 +34,8 @@ html {
 /* Styles for a navigation bar */
 .navbar {
   padding: 20px;
-  height: 90px; /* Adjust this value as needed */
+  height: 90px;
+  /* Adjust this value as needed */
   /* Remove the transition effect on height */
 }
 
@@ -171,11 +171,6 @@ textarea:focus {
   color: orangered
 }
 
-/* .navbar-nav .nav-link-settings {
-  float: right;
-} */
-
-
 .show-pass-btn {
   border: 1px solid #232323;
   border-radius: 3px;
@@ -209,13 +204,21 @@ input {
 /* Grid Styles */
 
 /* 2x2 Grid */
+
+.g1x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  padding: 20px;
+}
+
 .g2x2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  margin: 20px;
 }
 
 /* 4x2 Grid */
@@ -234,8 +237,14 @@ input {
   grid-row: 1;
 }
 
+.profile-btn {
+  border: 1px solid black;
+  background-color: rgb(168, 167, 167);
+}
+
 .grid-item {
   padding: 20px;
+  margin: 15px;
   background-color: #DDDBF1;
   border-radius: 7px;
   text-align: center;
@@ -273,14 +282,14 @@ input {
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-  margin: 55px 20px 20px 20px;
+  margin: 20px;
   padding: 30px;
 }
 
 .g1x1 {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(1,1fr);
+  grid-template-rows: repeat(1, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
   padding: 10px;
@@ -299,6 +308,18 @@ input {
   box-shadow: 1px 3px 10px rgb(0 0 0 / 0.4);
 }
 
+.profile-health-link {
+  width: 300px;
+  height: 350px;
+  border: none;
+  border-radius: 8px;
+  transition: 0.15s ease-in-out;
+}
+
+.profile-health-link:hover {
+  box-shadow: 1px 3px 10px rgb(0 0 0 / 0.4);
+}
+
 /* Flash Messages Styles */
 
 /* Styles for a fixed-position element */
@@ -313,7 +334,7 @@ input {
   z-index: 1;
 }
 
-.topnav-right{
+.topnav-right {
   width: fit-content;
   position: absolute;
   right: 0;

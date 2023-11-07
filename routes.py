@@ -36,9 +36,31 @@ def settings():
 
 @app.route('/profile')
 def profile():
-    title = "blank"
     current_user = session.get("user")
-    return render_template('profile.html', title=title, current_user=current_user)
+    return render_template('profile.html', current_user=current_user)
+
+@app.route('/upload-bio', methods=['GET', 'POST'])
+def upload_bio():
+    current_user = session.get("user")
+    if request.method == 'POST':
+        bio = request.form['bio']
+        get_user_ID = db.queryDB("SELECT Customer_ID FROM Customers_Table WHERE Name = ?", [user[0][1]])
+
+        db.updateDB("UPDATE Customers_Table SET Bio = ? WHERE Customer_ID = ?", [bio, get_user_ID[0][0]])
+
+        #// This displays a flash message for the user to see that a change has been made
+        flash("User has changed their bio", "info")
+        #// This gets the suer session + updates it
+        session['user'] = db.queryDB('SELECT * FROM Customers_Table WHERE Name = ?', [user[0][1]])
+        #// Returns a redirect to the user profile page
+        return redirect(url_for('profile'))
+
+    return render_template('profile.html', current_user=current_user)
+
+@app.route('/flash-not-available')
+def flash_not_available():
+    flash('This feature is currently unavailable.','danger')
+    return redirect(url_for('settings'))
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
